@@ -16,6 +16,7 @@ class Register extends Component{
     }
     handleRegisterSubmit = async () => {
         const {email, password} = this.state;
+        this.props.registerAPI({email, password})
         const res = await this.props.registerAPI({email, password}).catch(err => err);
         if(res){
             this.setState({
@@ -33,7 +34,7 @@ class Register extends Component{
                     <input className="input" id="email" placeholder="Email" type="text" onChange={this.handleChangeText} value={this.state.email} />
                     <input className="input" id="password" placeholder="Password" type="Password" onChange={this.handleChangeText} value={this.state.password} />
                     <Button onClick={this.handleRegisterSubmit} title="Register" loading={this.props.isLoading}/>
-                    </div>
+                </div>
             </div> 
         )
     }
